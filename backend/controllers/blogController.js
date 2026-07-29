@@ -542,7 +542,7 @@ export const createBlog = async (req, res) => {
       }
     }
 
-    const Blog = await Blog.create({
+    const blog = await Blog.create({
       title,
       author,
       email,
@@ -567,7 +567,7 @@ export const createBlog = async (req, res) => {
   //     message: error.message,
   //   });
   // }
-  catch (error) {
+  }catch (error) {
 
   console.log("CREATE BLOG ERROR:", error);
 
