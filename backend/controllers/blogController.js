@@ -494,7 +494,7 @@
 //   }
 // };
 
-import blog from "../models/Blog.js";
+import Blog from "../models/Blog.js";
 import { Parser } from "json2csv";
 
 // CREATE A NEW BLOG
@@ -542,7 +542,7 @@ export const createBlog = async (req, res) => {
       }
     }
 
-    const blog = await Blog.create({
+    const Blog = await Blog.create({
       title,
       author,
       email,
@@ -561,12 +561,21 @@ export const createBlog = async (req, res) => {
       message: "Blog created successfully",
       data: blog,
     });
-  } catch (error) {
-    res.status(500).json({
-      success: false,
-      message: error.message,
-    });
-  }
+  // } catch (error) {
+  //   res.status(500).json({
+  //     success: false,
+  //     message: error.message,
+  //   });
+  // }
+  catch (error) {
+
+  console.log("CREATE BLOG ERROR:", error);
+
+  res.status(500).json({
+    success: false,
+    message: error.message,
+  });
+}
 };
 
 // GET ALL BLOGS WITH PAGINATION
